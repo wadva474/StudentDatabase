@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">StudentDatabase</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_name">First Name</string>
+    <string name="surname">Surname</string>
+    <string name="addstudent">AddStudent</string>
+</resources>
