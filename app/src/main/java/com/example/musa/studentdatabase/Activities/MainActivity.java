@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.musa.studentdatabase.APPEXECUTORS.AppExecutors;
 import com.example.musa.studentdatabase.DATABASE.AppDatabase;
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.On
     }
 
     @OnClick(R.id.fab)
-    public void StartAddStudent(){
+    public void StartAddStudent(View view){
         Intent intent=new Intent(this,AddStudentsDetails.class);
         startActivity(intent);
     }
@@ -98,8 +100,16 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.On
 
     @Override
     public void onitemclicklistener(int elementid) {
+        Intent intent =new Intent(MainActivity.this,AddStudentsDetails.class);
+        intent.putExtra("StudentId",elementid);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onimageclicked() {
 
     }
+
     public void SetupViewModel(){
         MainViewModel mainViewModel= ViewModelProviders.of(this).get(MainViewModel.class);
        mainViewModel.getStudentDetailsLiveData().observe(this, new Observer<List<StudentDetails>>() {

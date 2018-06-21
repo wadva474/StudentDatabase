@@ -26,6 +26,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/surname"/>
     </android.support.design.widget.TextInputLayout>
-
+<Button
+    android:id="@+id/addStudent"
+    android:onClick="AddUpdateStudent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="@string/add_student"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="8dp"/>
 
 </LinearLayout>

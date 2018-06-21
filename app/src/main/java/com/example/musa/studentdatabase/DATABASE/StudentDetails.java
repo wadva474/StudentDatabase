@@ -13,9 +13,15 @@ public class StudentDetails {
     public String Sname;
     public String Fname;
     public int Age;
+    public int ImageResource;
 
+    public int getImageResource() {
+        return ImageResource;
+    }
 
-
+    public void setImageResource(int imageResource) {
+        ImageResource = imageResource;
+    }
 
     @Ignore
     public StudentDetails(String sname, String fname, int age) {

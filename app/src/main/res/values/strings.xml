@@ -4,4 +4,6 @@
     <string name="first_name">First Name</string>
     <string name="surname">Surname</string>
     <string name="addstudent">AddStudent</string>
+    <string name="add_student">Add Student</string>
+    <string name="update">Update</string>
 </resources>

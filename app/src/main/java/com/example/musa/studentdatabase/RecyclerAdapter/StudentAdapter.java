@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.musa.studentdatabase.DATABASE.StudentDetails;
@@ -48,6 +49,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
         StudentDetails studentDetails=studentdetails.get(position);
         holder.Surname.setText(studentDetails.getSname());
         holder.firstname.setText(studentDetails.getFname());
+        holder.imageView.setImageResource(studentDetails.getImageResource());
 
     }
 
@@ -61,23 +63,33 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
     public interface OnItemCLickListener{
         void onitemclicklistener(int elementid);
+        void onimageclicked();
     }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView firstname;
         private TextView Surname;
+        private ImageView imageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            firstname=itemView.findViewById(R.id.firstName);
+            firstname=itemView.findViewById(R.id.Firstname);
             Surname=itemView.findViewById(R.id.Surname);
+            imageView=itemView.findViewById(R.id.imageView);
             itemView.setOnClickListener(this);
+            imageView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            int Selected=studentdetails.get(getAdapterPosition()).getid();
-            mlistner.onitemclicklistener(Selected);
+            if (v == itemView) {
+                int Selected = studentdetails.get(getAdapterPosition()).getid();
+                mlistner.onitemclicklistener(Selected);
+            }
+            else if (v instanceof ImageView){
+                mlistner.onimageclicked();
+            }
+
         }
     }
 }
